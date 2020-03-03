@@ -1,0 +1,11 @@
+C:\Users\GLaDOS MkII\Documents\uni\projects\uol_Algo_Cmplx_1\uol_Algo_Cmplx_1\bin\Debug\netcoreapp3.1\uol_Algo_Cmplx_1.exe
+C:\Users\GLaDOS MkII\Documents\uni\projects\uol_Algo_Cmplx_1\uol_Algo_Cmplx_1\bin\Debug\netcoreapp3.1\uol_Algo_Cmplx_1.deps.json
+C:\Users\GLaDOS MkII\Documents\uni\projects\uol_Algo_Cmplx_1\uol_Algo_Cmplx_1\bin\Debug\netcoreapp3.1\uol_Algo_Cmplx_1.runtimeconfig.json
+C:\Users\GLaDOS MkII\Documents\uni\projects\uol_Algo_Cmplx_1\uol_Algo_Cmplx_1\bin\Debug\netcoreapp3.1\uol_Algo_Cmplx_1.runtimeconfig.dev.json
+C:\Users\GLaDOS MkII\Documents\uni\projects\uol_Algo_Cmplx_1\uol_Algo_Cmplx_1\bin\Debug\netcoreapp3.1\uol_Algo_Cmplx_1.dll
+C:\Users\GLaDOS MkII\Documents\uni\projects\uol_Algo_Cmplx_1\uol_Algo_Cmplx_1\bin\Debug\netcoreapp3.1\uol_Algo_Cmplx_1.pdb
+C:\Users\GLaDOS MkII\Documents\uni\projects\uol_Algo_Cmplx_1\uol_Algo_Cmplx_1\obj\Debug\netcoreapp3.1\uol_Algo_Cmplx_1.csprojAssemblyReference.cache
+C:\Users\GLaDOS MkII\Documents\uni\projects\uol_Algo_Cmplx_1\uol_Algo_Cmplx_1\obj\Debug\netcoreapp3.1\uol_Algo_Cmplx_1.AssemblyInfoInputs.cache
+C:\Users\GLaDOS MkII\Documents\uni\projects\uol_Algo_Cmplx_1\uol_Algo_Cmplx_1\obj\Debug\netcoreapp3.1\uol_Algo_Cmplx_1.AssemblyInfo.cs
+C:\Users\GLaDOS MkII\Documents\uni\projects\uol_Algo_Cmplx_1\uol_Algo_Cmplx_1\obj\Debug\netcoreapp3.1\uol_Algo_Cmplx_1.dll
+C:\Users\GLaDOS MkII\Documents\uni\projects\uol_Algo_Cmplx_1\uol_Algo_Cmplx_1\obj\Debug\netcoreapp3.1\uol_Algo_Cmplx_1.pdb

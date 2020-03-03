@@ -42,7 +42,7 @@ namespace uol_Algo_Cmplx_1
 			string line;
 			List<int> line_contents = new List<int>();
 
-			StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\../../uol_Algo_Cmplx_1\data\" + filename + ".txt");
+			StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\../../data\" + filename + ".txt");
 
 			Console.WriteLine(filename + " selected");
 
