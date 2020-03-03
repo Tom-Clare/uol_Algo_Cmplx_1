@@ -26,23 +26,54 @@ namespace uol_Algo_Cmplx_1
 				{ 6, new ArrayDetails {Name="Net_3_2048", Step=50} }
 			};
 
-			string array_name = getArrayName(files);
-			List<int> analyse_target_list = composeArray(array_name);
+			ArrayDetails target_details = getArray(files);
+			List<int> analyse_target_list = composeArray(target_details.Name);
 			int[] analyse_target = analyse_target_list.ToArray(); // Converted List to array, ready for analysing
 
+			Console.WriteLine("Which algorithm would you like to use?");
+			bool valid = false;
+			int[] out_array = new int[0];
+			while (!valid)
+			{
+				string request = Console.ReadLine();
+				if (request == "1" || request == "bubbleSort")
+				{
+					out_array = CustomSorting.bubbleSort(analyse_target);
+					valid = true;
+				}
+				else if (request == "2" || request == "mergeSort")
+				{
+					int[] test = new int[] { 1, 2, 5, 7, 2, 53, 3 };
+					out_array = CustomSorting.mergeSort(test, 0, test.Length - 1);
+					valid = true;
+				}
+				else if (request == "3" || request == "quickSort")
+				{
+					//out_array = CustomSorting.quickSort(analyse_target);
+					valid = true;
+				}
+				else if (request == "4" || request == "heapSort")
+				{
+					//out_array = CustomSorting.heapSort(analyse_target);
+					valid = true;
+				}
+				else if (!valid)
+				{
+					Console.WriteLine("Invalid input. Please enter an index or name from the list.");
+				}
+			}
 
+			displayArray(out_array);
 
-			Console.ReadKey();
 		}
 
 		static List<int> composeArray(string filename)
 		{
-			string dir = Directory.GetCurrentDirectory();
 			int counter = 0;
 			string line;
 			List<int> line_contents = new List<int>();
 
-			StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\../../data\" + filename + ".txt");
+			StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\../../../data\" + filename + ".txt");
 
 			Console.WriteLine(filename + " selected");
 
@@ -54,7 +85,7 @@ namespace uol_Algo_Cmplx_1
 			return line_contents;
 		}
 
-		static string getArrayName(Dictionary<int, ArrayDetails> files)
+		static ArrayDetails getArray(Dictionary<int, ArrayDetails> files)
 		{
 			Console.WriteLine("Please type the number of one of the following arrays to be analysed:");
 			foreach (var file in files)
@@ -68,7 +99,7 @@ namespace uol_Algo_Cmplx_1
 			while (valid == false)
 			{
 				input = Console.ReadLine();
-				if(int.TryParse(input, out number))
+				if (int.TryParse(input, out number))
 				{
 					valid = true;
 				}
@@ -77,7 +108,15 @@ namespace uol_Algo_Cmplx_1
 					Console.WriteLine("Invalid input. Please enter a number only");
 				}
 			}
-			return files[number].Name;
+			return files[number];
+		}
+
+		public static void displayArray(int[] array)
+		{
+			for (int i = 0; i < array.Length; i++)
+			{
+				Console.WriteLine(array[i]);
+			}
 		}
 	}
 }
