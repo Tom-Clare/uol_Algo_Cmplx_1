@@ -7,7 +7,7 @@ namespace uol_Algo_Cmplx_1
 {
     class CustomSorting
     {
-        public Dictionary<int, string> available_algorithms = new Dictionary<int, string>
+        public static Dictionary<int, string> available_algorithms = new Dictionary<int, string>
         {
             {1, "Bubble Sort" },
             {2, "Merge Sort" },
@@ -37,51 +37,50 @@ namespace uol_Algo_Cmplx_1
 
         public static int[] mergeSort (int[] target, int left, int right)
         {
-            // currently not working. Go through with pen and paper, see what's wrong.
-            if (left < right && target.Length > 1)
+            if (left < right) // recursive until they are the same index
             {
-                int middle = (left + right) / 2;
+                int middle = (left + right) / 2; // Calculate where we split the array
 
-                mergeSort(target, left, middle);
-                mergeSort(target, middle, right);
+                mergeSort(target, left, middle); // Break down first half further
+                mergeSort(target, middle + 1, right); // Break down second half further
 
-                merge(target, left, middle + 1, right);
+                merge(target, left, middle, right); // Merge and sort the two halves
             }
 
-            return target;
+            return target; // Return results
         }
 
         private static int[] merge (int[] target, int left, int middle, int right)
         {
-            int[] left_array = new int[middle - left + 1];
-            int[] right_array = new int[right - middle];
+            int[] left_array = new int[middle - left + 1]; // Create left half of array
+            int[] right_array = new int[right - middle]; // Create right half of array
 
-            Array.Copy(target, left, left_array, 0, middle - left + 1);
-            Array.Copy(target, middle + 1, right_array, 0, right - middle + 1);
+            Array.Copy(target, left, left_array, 0, middle - left + 1); // Copy in values. We now have the arrays to work with and to amalgamate into one array.
+            Array.Copy(target, middle + 1, right_array, 0, right - middle);
 
-            int i = 0;
+            int i = 0; // Initialise array indexes
             int j = 0;
 
-            for (int k = left; k < right + 1; k++)
+            for (int k = left; k < right + 1; k++) // Using k as a counter
             {
-                if (i == left_array.Length)
+                if (i == left_array.Length) // if we've gone through all values in the left array...
                 {
-                    target[k] = right_array[j];
+                    target[k] = right_array[j]; // ...add values from the right array
                     j++;
                 }
-                else if (j == right_array.Length)
+                else if (j == right_array.Length) // likewise if we've exhausted the right array...
                 {
-                    target[k] = left_array[i];
+                    target[k] = left_array[i]; //...add from the left
                     i++;
                 }
-                else if (left_array[i] <= right_array[j])
+                else if (left_array[i] <= right_array[j]) // Compare and add smallest
                 {
                     target[k] = left_array[i];
                     i++;
                 }
                 else
                 {
-                    target[k] = right_array[j];
+                    target[k] = right_array[j]; // Alternative to the comparison
                     j++;
                 }
             }

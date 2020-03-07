@@ -26,41 +26,29 @@ namespace uol_Algo_Cmplx_1
 				{ 6, new ArrayDetails {Name="Net_3_2048", Step=50} }
 			};
 
-			ArrayDetails target_details = getArray(files);
-			List<int> analyse_target_list = composeArray(target_details.Name);
-			int[] analyse_target = analyse_target_list.ToArray(); // Converted List to array, ready for analysing
+			ArrayDetails target_details = getArray(files); // Get the requested array details
+			List<int> analyse_target_list = composeArray(target_details.Name); // Create a List from values in the target array
+			int[] analyse_target = analyse_target_list.ToArray(); // Cast List to array<int>, ready for analysing
 
-			Console.WriteLine("Which algorithm would you like to use?");
-			bool valid = false;
+			string request = getSortingAlgorithm(); // Get name of requested algorithm
 			int[] out_array = new int[0];
-			while (!valid)
+
+			analyse_target = new int[] { 1, 5, 4, 9, 3 };
+			if (request == "Bubble Sort")
 			{
-				string request = Console.ReadLine();
-				if (request == "1" || request == "bubbleSort")
-				{
-					out_array = CustomSorting.bubbleSort(analyse_target);
-					valid = true;
-				}
-				else if (request == "2" || request == "mergeSort")
-				{
-					int[] test = new int[] { 1, 2, 5, 7, 2, 53, 3 };
-					out_array = CustomSorting.mergeSort(test, 0, test.Length - 1);
-					valid = true;
-				}
-				else if (request == "3" || request == "quickSort")
-				{
-					//out_array = CustomSorting.quickSort(analyse_target);
-					valid = true;
-				}
-				else if (request == "4" || request == "heapSort")
-				{
-					//out_array = CustomSorting.heapSort(analyse_target);
-					valid = true;
-				}
-				else if (!valid)
-				{
-					Console.WriteLine("Invalid input. Please enter an index or name from the list.");
-				}
+				out_array = CustomSorting.bubbleSort(analyse_target);
+			}
+			else if (request == "Merge Sort")
+			{
+				out_array = CustomSorting.mergeSort(analyse_target, 0, analyse_target.Length - 1);
+			}
+			else if (request == "Quick Sort")
+			{
+				//out_array = CustomSorting.quickSort(analyse_target);
+			}
+			else if (request == "Heap Sort")
+			{
+				//out_array = CustomSorting.heapSort(analyse_target);
 			}
 
 			displayArray(out_array);
@@ -88,7 +76,7 @@ namespace uol_Algo_Cmplx_1
 		static ArrayDetails getArray(Dictionary<int, ArrayDetails> files)
 		{
 			Console.WriteLine("Please type the number of one of the following arrays to be analysed:");
-			foreach (var file in files)
+			foreach (var file in files) // Iterate through array names for selection
 			{
 				Console.WriteLine(file.Key + ") " + file.Value.Name);
 			}
@@ -96,23 +84,53 @@ namespace uol_Algo_Cmplx_1
 			bool valid = false;
 			int number = 0;
 			string input = "";
-			while (valid == false)
+			while (!valid)
 			{
 				input = Console.ReadLine();
-				if (int.TryParse(input, out number))
+				if (int.TryParse(input, out number)) // we require an index
 				{
 					valid = true;
 				}
 				else
 				{
+					// Invalid input
 					Console.WriteLine("Invalid input. Please enter a number only");
 				}
 			}
-			return files[number];
+			return files[number]; // return details of array as ArrayDetails object
+		}
+
+		private static string getSortingAlgorithm ()
+		{
+			Console.WriteLine("Which algorithm would you like to use? Please enter the index or name as shown below:");
+
+			foreach (KeyValuePair<int, string> algorithm in CustomSorting.available_algorithms) // Iterate through and display available algorithms for selection
+			{
+				Console.WriteLine(algorithm.Key + ") " + algorithm.Value);
+			}
+
+			string input = "";
+			int num;
+
+			input = Console.ReadLine();
+			// while index isn't in available_algorithms or input isn't a value in that dictionary...
+			while (!(int.TryParse(input, out num) && CustomSorting.available_algorithms.ContainsKey(int.Parse(input))) && !CustomSorting.available_algorithms.ContainsValue(input))
+			{
+				// Invalid input
+				Console.WriteLine("Invalid Input. Please try again.");
+				input = Console.ReadLine();
+			}
+
+			if (int.TryParse(input, out num)) // If their input was a number
+			{
+				return CustomSorting.available_algorithms[num]; // Get name of algorithm from index
+			}
+			return input; // In this case, they entered the name of the algorithm
 		}
 
 		public static void displayArray(int[] array)
 		{
+			// iterate through and simply display the array
 			for (int i = 0; i < array.Length; i++)
 			{
 				Console.WriteLine(array[i]);
