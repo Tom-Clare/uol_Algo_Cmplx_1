@@ -33,7 +33,7 @@ namespace uol_Algo_Cmplx_1
 			string request = getSortingAlgorithm(); // Get name of requested algorithm
 			int[] out_array = new int[0];
 
-			analyse_target = new int[] { 1, 5, 4, 9, 3 };
+			//analyse_target = new int[] { 1, 5, 4, 9, 3 };
 			if (request == "Bubble Sort")
 			{
 				out_array = CustomSorting.bubbleSort(analyse_target);
@@ -44,32 +44,39 @@ namespace uol_Algo_Cmplx_1
 			}
 			else if (request == "Quick Sort")
 			{
-				//out_array = CustomSorting.quickSort(analyse_target);
+				out_array = CustomSorting.quickSort(analyse_target, 0, analyse_target.Length - 1);
 			}
 			else if (request == "Heap Sort")
 			{
 				//out_array = CustomSorting.heapSort(analyse_target);
 			}
 
-			displayArray(out_array);
+			displayArray(target_details, out_array);
 
 		}
 
 		static List<int> composeArray(string filename)
 		{
-			int counter = 0;
 			string line;
 			List<int> line_contents = new List<int>();
 
-			StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\../../../data\" + filename + ".txt");
-
-			Console.WriteLine(filename + " selected");
-
-			while ((line = file.ReadLine()) != null)
+			try
 			{
-				line_contents.Add(int.Parse(line));
-				counter++;
+				StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\../../../data\" + filename + ".txt");  // locate and open file
+				
+				Console.WriteLine(filename + " selected");  // clarify with user
+
+				while ((line = file.ReadLine()) != null)  // while not the end of the file
+				{
+					line_contents.Add(int.Parse(line));  // add as int
+				}
 			}
+			catch (FileNotFoundException e)
+			{
+				Console.WriteLine("Target file could not be found");
+				Environment.Exit(2); // 2 is file not found exception for windows standards
+			}
+
 			return line_contents;
 		}
 
@@ -78,7 +85,7 @@ namespace uol_Algo_Cmplx_1
 			Console.WriteLine("Please type the number of one of the following arrays to be analysed:");
 			foreach (var file in files) // Iterate through array names for selection
 			{
-				Console.WriteLine(file.Key + ") " + file.Value.Name);
+				Console.WriteLine(file.Key + ") " + file.Value.Name);  // format and display
 			}
 
 			bool valid = false;
@@ -87,7 +94,7 @@ namespace uol_Algo_Cmplx_1
 			while (!valid)
 			{
 				input = Console.ReadLine();
-				if (int.TryParse(input, out number)) // we require an index
+				if (int.TryParse(input, out number)) // we require an index, must be a number
 				{
 					valid = true;
 				}
@@ -128,12 +135,15 @@ namespace uol_Algo_Cmplx_1
 			return input; // In this case, they entered the name of the algorithm
 		}
 
-		public static void displayArray(int[] array)
+		public static void displayArray(ArrayDetails array_details, int[] array)
 		{
 			// iterate through and simply display the array
 			for (int i = 0; i < array.Length; i++)
 			{
-				Console.WriteLine(array[i]);
+				if (i % array_details.Step == 0)  // Only display every nth value as specified in ArrayDetails object
+				{
+					Console.WriteLine(array[i]);
+				}
 			}
 		}
 	}

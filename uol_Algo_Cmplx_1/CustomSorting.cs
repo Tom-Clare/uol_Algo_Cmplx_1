@@ -80,12 +80,57 @@ namespace uol_Algo_Cmplx_1
                 }
                 else
                 {
-                    target[k] = right_array[j]; // Alternative to the comparison
+                    target[k] = right_array[j]; // Alternate outcome of the comparison
                     j++;
                 }
             }
 
             return target;
+        }
+
+        public static int[] quickSort (int[] target, int left, int right)
+        {
+            if (left < right)  // if there are at least two values in our range...
+            {
+                int pivot = sortAndGetPivot(target, left, right);  // start swapping values about the pivot point and return a new pivot
+                if (pivot > 1) quickSort(target, left, pivot - 1);  // again about the *left* side of the new pivot point
+                if (pivot + 1 < right) quickSort(target, pivot + 1, right);  // again about the *right* side of the new pivot point
+            }
+
+            return target;  // feed back sorted array
+        }
+
+        private static int sortAndGetPivot (int[] target, int left, int right)
+        {
+            int pivot = target[left];  // select pivot point
+
+            while (true)
+            {
+
+                while (target[left] < pivot) // need an element on the left that's larger than pivot
+                {
+                    left++;
+                }
+                while (target[right] > pivot) // and an element on the right that's smaller than pivot
+                {
+                    right--;
+                }
+                if (left < right)  // value of left is higher than value of right, so if their indexes aren't in the right order...
+                {
+                    if (target[left] == target[right]) // ...and if they are the same value
+                    {
+                        return right; // return right element as new pivot point
+                    }
+
+                    int temp_left = target[left];   // otherwise swap left and right points
+                    target[left] = target[right];
+                    target[right] = temp_left;      // and loop again
+                }
+                else
+                {
+                    return right;  // the left and right values are in the correct order, meaning this pivot element is sorted. Return new pivot point.
+                }
+            }
         }
     }
 }
