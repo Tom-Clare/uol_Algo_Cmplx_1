@@ -88,6 +88,10 @@ namespace uol_Algo_Cmplx_1
 			{
 				value_index = CustomSearching.linearSearch(search_value, out_array_asc, ref comparisons_search);
 			}
+			else if (search_request == "Binary Search")
+			{
+				value_index = CustomSearching.binarySearch(search_value, out_array_asc, out_array_asc.Length / 2, ref comparisons_search);
+			}
 
 			displaySearchResults(search_value, value_index[0], out_array_asc, value_index[1], comparisons_search);
 		}
@@ -105,7 +109,7 @@ namespace uol_Algo_Cmplx_1
 
 				try
 				{
-					StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\../../../data\" + filename + ".txt");  // locate and open file
+					StreamReader file = new StreamReader("data/" + filename + ".txt");  // locate and open file
 				
 					Console.WriteLine(filename + " selected");  // clarify with user
 

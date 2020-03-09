@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\GLaDOS MkII\\.nuget\\packages\\": {}
+    "C:\\Users\\apric\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\GLaDOS MkII\\Documents\\uni\\projects\\uol_Algo_Cmplx_1\\uol_Algo_Cmplx_1\\uol_Algo_Cmplx_1.csproj",
+      "projectUniqueName": "C:\\Users\\apric\\Documents\\Projects\\uol_Algo_Cmplx_1\\uol_Algo_Cmplx_1\\uol_Algo_Cmplx_1\\uol_Algo_Cmplx_1.csproj",
       "projectName": "uol_Algo_Cmplx_1",
-      "projectPath": "C:\\Users\\GLaDOS MkII\\Documents\\uni\\projects\\uol_Algo_Cmplx_1\\uol_Algo_Cmplx_1\\uol_Algo_Cmplx_1.csproj",
-      "packagesPath": "C:\\Users\\GLaDOS MkII\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\GLaDOS MkII\\Documents\\uni\\projects\\uol_Algo_Cmplx_1\\uol_Algo_Cmplx_1\\obj\\",
+      "projectPath": "C:\\Users\\apric\\Documents\\Projects\\uol_Algo_Cmplx_1\\uol_Algo_Cmplx_1\\uol_Algo_Cmplx_1\\uol_Algo_Cmplx_1.csproj",
+      "packagesPath": "C:\\Users\\apric\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\apric\\Documents\\Projects\\uol_Algo_Cmplx_1\\uol_Algo_Cmplx_1\\uol_Algo_Cmplx_1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\GLaDOS MkII\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\apric\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

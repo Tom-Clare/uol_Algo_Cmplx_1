@@ -172,34 +172,35 @@ namespace uol_Algo_Cmplx_1
 
         public static int[] heapSort(bool reverse, int[] target, int length, ref int comparisons)
         {
-            for (int i = length / 2 - 1; i >= 0; i--)  // count down from half of target length
-                heapify(reverse, target, length, i, ref comparisons);  // create heap by calling heapify() for all non-leaf elements
-            for (int i = length - 1; i >= 0; i--)  // Excludes root element (largest element)
+            for (int i = length / 2 - 1; i >= 0; i--)  // attempt heap with centre node as root and scan down left side
+                heapify(reverse, target, length, i, ref comparisons);  // compare i with direct children
+            for (int i = length - 1; i >= 0; i--)  // scan down right side of heap
             {
                 int temp = target[0];  // replace root element with rightmost element
                 target[0] = target[i];
                 target[i] = temp;
-                heapify(reverse, target, i, 0, ref comparisons);  // and re-create heap with i as root
+                heapify(reverse, target, i, 0, ref comparisons);  // compare i with children and build heap
             }
 
+            // at this point, heapify() will ensure everything is sorted
             return target;
         }
 
-        private static void heapify(bool reverse, int[] target, int length, int root, ref int comparisons)
+        private static void heapify(bool reverse, int[] target, int length, int root, ref int comparisons)  // creates the heap structure
         {
             int largest = root;
-            int left = 2 * root + 1;
-            int right = 2 * root + 2;
+            int left = 2 * root + 1; // Index for left child
+            int right = 2 * root + 2;  // Index for right child
             comparisons++;
             if ((!reverse && left < length && target[left] > target[largest]) || (reverse && left < length && target[left] < target[largest]))  // larger/smaller element found
-                largest = left;
+                largest = left;  // compared left child
             comparisons++;
             if ((!reverse && right < length && target[right] > target[largest]) || (reverse && right < length && target[right] < target[largest]))  // larger/smaller element found
-                largest = right;
+                largest = right; // compared right child
             comparisons++;
             if (largest != root)
             {
-                int swap = target[root];  // swap tree root with larger element
+                int swap = target[root];  // swap tree root with larger/smaller element
                 target[root] = target[largest];
                 target[largest] = swap;
                 heapify(reverse, target, length, largest, ref comparisons);  // re-create heap with new root
